@@ -65,8 +65,6 @@ def SearchForSolution(commander_damage_filepath, boss_health_filepath, attempts_
     for i in data['all_commanders']:
         for b in data['all_bosses']:
             for l in range(N_levels):
-                # # skip bosses with zero health
-                # if data['boss_health'].iloc[l, b] > 0:
                 x[i, b, l] = model.NewIntVar(0, attempts_per_commander, f'x_{i}_{b}_{l}')
 
     # Define the variable tracking if a boss is killed at each level
@@ -74,9 +72,6 @@ def SearchForSolution(commander_damage_filepath, boss_health_filepath, attempts_
     y = {}
     for b in data['all_bosses']:
         for l in range(N_levels):
-            # # skip bosses with zero health
-            # if b < data['first_boss_without_zero_health'] and l == 0:
-            #     continue
             y[b, l] = model.NewBoolVar(f'y_{b}_{l}')
 
     # Define the variable tracking how much damage is done to a boss
@@ -85,9 +80,6 @@ def SearchForSolution(commander_damage_filepath, boss_health_filepath, attempts_
     z = {}
     for b in data['all_bosses']:
         for l in range(N_levels):
-            # # skip bosses with zero health
-            # if b < data['first_boss_without_zero_health'] and l == 0:
-            #     continue
             # Don't expect a boss to take more than twice its max health with overkill
             z[b, l] = model.NewIntVar(0, max_boss_health*2, f'z_{b}_{l}')
 
