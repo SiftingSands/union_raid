@@ -24,8 +24,9 @@ Assumptions:
 # Installation and Startup
 
 ## Run with Streamlit Cloud
-1. Go to https://share.streamlit.io/ and paste in the URL of this repo
-    -
+1. Go to https://siftingsands-union-raid-srcdashboard-42v6m8.streamlit.app
+
+OR
 
 ## Run with Python
 1. Install all Python dependencies
