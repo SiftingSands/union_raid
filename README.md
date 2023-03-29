@@ -1,3 +1,5 @@
+![demo](https://user-images.githubusercontent.com/43226539/228411797-07c95238-abac-449b-a18b-ad8b211ad1a7.gif)
+
 # Description
 
 Attempts to find the optimal commander battle order for union raids. Originally made for the Pockult union.
