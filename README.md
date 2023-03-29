@@ -23,23 +23,19 @@ Assumptions:
 
 # Installation and Startup
 
-# Run with Streamlit Cloud
+## Run with Streamlit Cloud
 1. Go to https://share.streamlit.io/ and paste in the URL of this repo
     -
 
-# Run with Python
+## Run with Python
 1. Install all Python dependencies
     - `pip install -r requirements.txt`
 2. Run the dashboard
-    - `streamlit run dashboard.py`
-OR use a different port other than the default 8501
-    - `streamlit run dashboard.py --server.port <port>`
+    - `streamlit run src/dashboard.py`
+    - OR use a different port other than the default 8501
+        - `streamlit run src/dashboard.py --server.port <port>`
 3. Open up the dashboard in your browser if it doesn't open automatically
-    - http://localhost:<port>
-
-
-- Could not get a Windows installer (https://github.com/takluyver/pynsist) built using Pynsist to work. The installer would run, but the Streamlit dashboard would not load. Their example streamlit app worked fine, so it might be due to the later version of Streamlit used in this project or the use of OR-Tools.
-- Pyinstaller does not work in a straightforward manner with Streamlit, so a portable executable was not built.
+    - `http://localhost:<port>`
 
 # Usage
 
@@ -51,10 +47,14 @@ OR use a different port other than the default 8501
 6. The solver will run for the specified time limit and display the results
 Results include a interactive bar chart, a printout of the battle order, and a table of the solution output.
 
-- Sample CSVs are provided in the `data` folder so the user can see the expected data format
-  - `python synthetic_commander_damage_data.py` will generate a sample CSV with random damage (using an upper to lower bound) dealt by each commander to each boss that is linearly decreasing from boss level 1 to 10 and from commander 1 to 32.
+- Sample CSVs are provided in the `assets` folder so the user can see the expected data format
+  - `python src/synthetic_commander_damage_data.py` will generate a sample CSV with random damage (using an upper to lower bound) dealt by each commander to each boss that is linearly decreasing from boss level 1 to 10 and from commander 1 to 32.
 
 # Limitations
 
 1. Estimating how much damage each commander deals to each boss likely has a high variance, and is possibly multi-modal given the game mechanics. This is the major limiting factor on the usability of the solver's output.
 2. Solver may not find an optimal solution if the time limit is too short, or if the raid setup presents a very challenging problem. Dramatically increasing the time limit may not significantly increase the number of bosses defeated. A few minutes seems to be a good rule of thumb.
+
+# Notes on making binaries
+- Could not get a Windows installer (https://github.com/takluyver/pynsist) built using Pynsist to work. The installer would run, but the Streamlit dashboard would not load. Their example streamlit app worked fine, so it might be due to the later version of Streamlit used in this project or the use of OR-Tools.
+- Pyinstaller does not work in a straightforward manner with Streamlit, so a portable executable was not built.
