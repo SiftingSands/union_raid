@@ -1,3 +1,4 @@
+protobuf==3.20.3
 numpy==1.24.2
 ortools==9.6.2534
 pandas==1.5.3
